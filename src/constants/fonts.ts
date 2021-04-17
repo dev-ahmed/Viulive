@@ -18,7 +18,7 @@ const headlines = StyleSheet.create({
     ...SpaceMono.bold,
   },
   subtitle: {
-    fontSize: calcFont(18),
+    fontSize: calcFont(16),
     ...SpaceMono.bold,
   },
   description: {
