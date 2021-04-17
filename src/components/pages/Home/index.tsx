@@ -30,7 +30,7 @@ export const Home: React.FC = React.memo(({}) => {
   }, [initialFetch]);
 
   const _loadMore = useCallbackOne(async () => {
-    if (songsList.length > 0 && songsList.length !== songsCount) {
+    if (songsList.length > 0 && songsList.length <= songsCount) {
       await dispatch(getMoreSongs(songsList.length + 20, searchKey));
     }
   }, [songsList]);
@@ -51,7 +51,7 @@ export const Home: React.FC = React.memo(({}) => {
         />
         {songsList.length > 0 ? (
           <SongsList
-            showLoadMoreIndicator={songsList.length !== songsCount}
+            showLoadMoreIndicator={songsList.length <= songsCount}
             onEndReached={_loadMore}
             list={songsList}
           />

@@ -21,6 +21,7 @@ export const homeReducer: Reducer<SongState, SongsAction> = (
       return {
         ...state,
         list: action.list,
+        totalCount: action.totalCount,
       };
     default:
       return state;

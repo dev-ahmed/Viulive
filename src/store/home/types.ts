@@ -6,17 +6,18 @@ export const SEARCH_SONGS = 'SEARCH_SONGS';
 export type GetSongsAction = {
   type: typeof LIST_ALL_SONGS;
   list: Song[];
-  totalCount?: number;
+  totalCount: number;
 };
 
 export type SearchSongsAction = {
   type: typeof SEARCH_SONGS;
   list: Song[];
+  totalCount: number;
 };
 
 export type SongState = {
   list: Song[];
-  totalCount?: number;
+  totalCount: number;
 };
 
 export type SongDispatch = (args: GetSongsAction) => GetSongsAction;

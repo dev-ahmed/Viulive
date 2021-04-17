@@ -26,15 +26,17 @@ export const getMoreSongs = (
   const oldSongs = getState().homeReducer.list;
   const songs = await get(endpoints.SONGS, {params: {_start, _limit, q}});
   const allSongs = _.uniq([...oldSongs, ...songs.data]);
+  const totalCount = songs.headers['x-total-count'];
   setTimeout(() => {
-    dispatch({type: LIST_ALL_SONGS, list: allSongs});
+    dispatch({type: LIST_ALL_SONGS, list: allSongs, totalCount});
   }, 500);
 };
 
 export const searchSongs = (q: string) => async (
   dispatch: SearchSongDispatch,
 ) => {
-  const {data} = await get(endpoints.SONGS, {params: {q}});
+  const {data, headers} = await get(endpoints.SONGS, {params: {q}});
   const songs: Song[] = _.uniq(data);
-  dispatch({type: SEARCH_SONGS, list: songs});
+  const totalCount = headers['x-total-count'];
+  dispatch({type: SEARCH_SONGS, list: songs, totalCount});
 };
