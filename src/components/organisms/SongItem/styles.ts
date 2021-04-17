@@ -20,7 +20,7 @@ export default StyleSheet.create({
     marginHorizontal: metrics.h_spacing_s,
     paddingVertical: metrics.v_spacing_l,
   },
-  icon: {
+  favoriteButton: {
     alignSelf: 'flex-end',
     marginBottom: metrics.v_spacing_l,
     marginRight: metrics.h_spacing_l,

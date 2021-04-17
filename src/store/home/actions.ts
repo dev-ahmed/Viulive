@@ -6,6 +6,8 @@ import {
   LIST_ALL_SONGS,
   SearchSongDispatch,
   SEARCH_SONGS,
+  AddToFavoriteDispatch,
+  ADD_TO_FAVOIRTES,
 } from './types';
 import _ from 'lodash';
 import {Song} from '../../interfaces/Song';
@@ -39,4 +41,18 @@ export const searchSongs = (q: string) => async (
   const songs: Song[] = _.uniq(data);
   const totalCount = headers['x-total-count'];
   dispatch({type: SEARCH_SONGS, list: songs, totalCount});
+};
+
+export const addToFavorites = (songId: string) => (
+  dispatch: AddToFavoriteDispatch,
+  getState: () => IRootState,
+) => {
+  const favorites = getState().homeReducer.favorites;
+  if (favorites.includes(songId)) {
+    const index = favorites.indexOf(songId);
+    favorites.splice(index, 1);
+  } else {
+    favorites.push(songId);
+  }
+  dispatch({type: ADD_TO_FAVOIRTES, favorites});
 };
