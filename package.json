@@ -20,6 +20,7 @@
     "axios": "^0.21.1",
     "fast-memoize": "^2.5.2",
     "i18n-js": "^3.8.0",
+    "lodash": "^4.17.21",
     "lodash.memoize": "^4.1.2",
     "react": "17.0.1",
     "react-native": "0.64.0",

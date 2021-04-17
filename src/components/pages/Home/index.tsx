@@ -1,16 +1,19 @@
+import {useTheme} from '@react-navigation/native';
 import React, {useEffect} from 'react';
+import {ActivityIndicator} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {useCallbackOne} from 'use-memo-one';
 import {IRootState} from '../../../store';
-import {getSongs} from '../../../store/home/actions';
+import {getMoreSongs, getSongs} from '../../../store/home/actions';
 import {Container} from '../../atoms/Container';
 import {SongsList} from '../../templates/SongsList';
 
 export const Home: React.FC = React.memo(({}) => {
   const dispatch = useDispatch();
-
-  const {songsList} = useSelector((state: IRootState) => ({
+  const {colors} = useTheme();
+  const {songsList, songsCount} = useSelector((state: IRootState) => ({
     songsList: state.homeReducer.list,
+    songsCount: state.homeReducer.totalCount,
   }));
 
   const initialFetch = useCallbackOne(async () => {
@@ -21,9 +24,23 @@ export const Home: React.FC = React.memo(({}) => {
     initialFetch();
   }, [initialFetch]);
 
+  const _loadMore = useCallbackOne(async () => {
+    if (songsList.length > 0 && songsList.length !== songsCount) {
+      await dispatch(getMoreSongs(songsList.length + 20));
+    }
+  }, [songsList]);
+
   return (
     <Container>
-      <SongsList list={songsList} />
+      {songsList.length > 0 ? (
+        <SongsList
+          showLoadMoreIndicator={songsList.length !== songsCount}
+          onEndReached={_loadMore}
+          list={songsList}
+        />
+      ) : (
+        <ActivityIndicator size="large" color={colors.primary} />
+      )}
     </Container>
   );
 });

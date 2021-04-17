@@ -19,7 +19,7 @@ export const SongItem: React.FC<Props> = React.memo(({song}) => {
   return (
     <View style={[styles.container, {backgroundColor: colors.card}]}>
       <Image style={styles.image} source={{uri: images}} />
-      <View>
+      <View style={styles.details}>
         <Text>{artist}</Text>
         <Text>{title}</Text>
         <Text>{search}</Text>

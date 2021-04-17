@@ -3,6 +3,7 @@ import {LIST_ALL_SONGS, SongsAction, SongState} from './types';
 
 const initialState = {
   list: [],
+  totalCount: 0,
 };
 
 export const homeReducer: Reducer<SongState, SongsAction> = (
@@ -14,6 +15,7 @@ export const homeReducer: Reducer<SongState, SongsAction> = (
       return {
         ...state,
         list: action.list,
+        totalCount: action.totalCount,
       };
     default:
       return state;
