@@ -1,5 +1,5 @@
 import {Reducer} from 'redux';
-import {LIST_ALL_SONGS, SongsAction, SongState} from './types';
+import {LIST_ALL_SONGS, SEARCH_SONGS, SongsAction, SongState} from './types';
 
 const initialState = {
   list: [],
@@ -16,6 +16,11 @@ export const homeReducer: Reducer<SongState, SongsAction> = (
         ...state,
         list: action.list,
         totalCount: action.totalCount,
+      };
+    case SEARCH_SONGS:
+      return {
+        ...state,
+        list: action.list,
       };
     default:
       return state;
