@@ -4,8 +4,11 @@ import {calcHeight} from '../../../utils/normalize';
 
 export default StyleSheet.create({
   container: {
-    paddingHorizontal: metrics.h_spacing_l,
-    paddingTop: calcHeight(50),
-    paddingBottom: metrics.h_spacing_l,
+    borderWidth: 1,
+    borderRadius: calcHeight(5),
+  },
+  text: {
+    paddingVertical: metrics.h_spacing_xs,
+    paddingHorizontal: metrics.h_spacing_s,
   },
 });

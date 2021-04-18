@@ -4,5 +4,5 @@ export interface Song {
   artist: string;
   images: string;
   level: number;
-  search: string;
+  search?: string;
 }

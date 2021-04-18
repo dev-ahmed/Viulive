@@ -20,6 +20,7 @@ export const SongsList: React.FC<Props> = React.memo(
 
     return (
       <FlatList
+        contentContainerStyle={styles.listContent}
         keyExtractor={item => item.id}
         renderItem={_renderItem}
         data={list}

@@ -25,4 +25,7 @@ export default StyleSheet.create({
     marginBottom: metrics.v_spacing_l,
     marginRight: metrics.h_spacing_l,
   },
+  stars: {
+    width: calcWidth(100),
+  },
 });

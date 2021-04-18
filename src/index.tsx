@@ -13,6 +13,8 @@ const App = () => {
     setI18nConfig();
   }, []);
 
+  // persistor.purge();
+
   return (
     <Provider store={store}>
       <StatusBar

@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 Reactotron.setAsyncStorageHandler(AsyncStorage)
   .configure({
-    name: 'Delivery Guy',
+    name: 'ViuLive',
   })
   .useReactNative({
     asyncStorage: true,
